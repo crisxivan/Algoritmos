@@ -3,12 +3,39 @@ package algoritmos;
 import java.util.ArrayList;
 import java.util.Random;
 
-
+import Grafos.Grafo;
 import algoritmosNoElementales.MergeSort;
 
 public class Resoluciones {
 
 	public static void main(String[] args) {
+		pruebaAlgoritmosOrdenamiento();
+		pruebaAlgoritmosGrafos();
+	}
+	
+	private static void pruebaAlgoritmosGrafos() {
+		int V = 9;
+        Grafo g = new Grafo(V);
+
+        g.agregarArista(0, 1, 4);
+        g.agregarArista(0, 7, 8);
+        g.agregarArista(1, 2, 8);
+        g.agregarArista(1, 7, 11);
+        g.agregarArista(2, 3, 7);
+        g.agregarArista(2, 8, 2);
+        g.agregarArista(2, 5, 4);
+        g.agregarArista(3, 4, 9);
+        g.agregarArista(3, 5, 14);
+        g.agregarArista(4, 5, 10);
+        g.agregarArista(5, 6, 2);
+        g.agregarArista(6, 7, 1);
+        g.agregarArista(6, 8, 6);
+        g.agregarArista(7, 8, 7);
+
+        g.dijkstra(0);
+	}
+
+	private static void pruebaAlgoritmosOrdenamiento() {
 		// Array con los números predefinidos
 //		int[] numeros1 = { 17, 42, 89, 5, 63, 11, 75 };
 		
