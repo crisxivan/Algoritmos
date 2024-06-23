@@ -3,7 +3,7 @@ package algoritmosNoElementales;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class AlgoritmosNE {
+public class QuickSort {
 
 	// Método principal que llama al método recursivo de quicksort
 	public static void quicksort(ArrayList<Integer> array) {

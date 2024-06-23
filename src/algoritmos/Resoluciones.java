@@ -3,7 +3,8 @@ package algoritmos;
 import java.util.ArrayList;
 import java.util.Random;
 
-import algoritmosNoElementales.AlgoritmosNE;
+
+import algoritmosNoElementales.MergeSort;
 
 public class Resoluciones {
 
@@ -25,7 +26,8 @@ public class Resoluciones {
 //        Algoritmo.seleccion(numeros);
 //        Algoritmo.burbujeo(numeros);
 //        Algoritmo.insersion(numeros);
-        AlgoritmosNE.quicksort(numeros);
+//        AlgoritmosNE.quicksort(numeros);
+        MergeSort.mergeSort(numeros);
 
         imprimirListaNumeros(numeros);
 	}
