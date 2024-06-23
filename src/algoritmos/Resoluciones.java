@@ -3,11 +3,13 @@ package algoritmos;
 import java.util.ArrayList;
 import java.util.Random;
 
+import algoritmosNoElementales.AlgoritmosNE;
+
 public class Resoluciones {
 
 	public static void main(String[] args) {
 		// Array con los números predefinidos
-		int[] numeros1 = { 17, 42, 89, 5, 63, 11, 75 };
+//		int[] numeros1 = { 17, 42, 89, 5, 63, 11, 75 };
 		
 		ArrayList<Integer> numeros = new ArrayList<>();
         numeros.add(17);
@@ -22,7 +24,8 @@ public class Resoluciones {
         
 //        Algoritmo.seleccion(numeros);
 //        Algoritmo.burbujeo(numeros);
-        Algoritmo.insersion(numeros);
+//        Algoritmo.insersion(numeros);
+        AlgoritmosNE.quicksort(numeros);
 
         imprimirListaNumeros(numeros);
 	}
