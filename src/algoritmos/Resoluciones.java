@@ -2,19 +2,23 @@ package algoritmos;
 
 import java.util.ArrayList;
 import java.util.Random;
-
 import Grafos.Grafo;
 import algoritmosNoElementales.MergeSort;
+import algoritmosNoElementales.ShellSort;
+import algoritmosNoElementales.QuickSort;
 
 public class Resoluciones {
 
-	public static void main(String[] args) {
-		pruebaAlgoritmosOrdenamiento();
-		pruebaAlgoritmosGrafos();
-	}
-	
-	private static void pruebaAlgoritmosGrafos() {
-		int V = 9;
+    public static void main(String[] args) {
+        // Prueba de algoritmos de ordenamiento
+        pruebaAlgoritmosOrdenamiento();
+
+        // Prueba de algoritmos de grafos
+        pruebaAlgoritmosGrafos();
+    }
+
+    private static void pruebaAlgoritmosGrafos() {
+        int V = 9;
         Grafo g = new Grafo(V);
 
         g.agregarArista(0, 1, 4);
@@ -32,34 +36,47 @@ public class Resoluciones {
         g.agregarArista(6, 8, 6);
         g.agregarArista(7, 8, 7);
 
+        // Ejecutar algoritmos en el grafo
         g.dijkstra(0);
-	}
+        ArrayList<Grafo.Arista> aristasMSTPrim = g.prim();
+        int[] coloresWelshPowell = g.welshPowell();
+        g.matula();
+    }
 
-	private static void pruebaAlgoritmosOrdenamiento() {
-		// Array con los números predefinidos
-//		int[] numeros1 = { 17, 42, 89, 5, 63, 11, 75 };
-		
-		ArrayList<Integer> numeros = new ArrayList<>();
-        numeros.add(17);
-        numeros.add(42);
-        numeros.add(89);
-        numeros.add(5);
-        numeros.add(63);
-        numeros.add(11);
-        numeros.add(75);
-        
-        imprimirListaNumeros(numeros);
-        
-//        Algoritmo.seleccion(numeros);
-//        Algoritmo.burbujeo(numeros);
-//        Algoritmo.insersion(numeros);
-//        AlgoritmosNE.quicksort(numeros);
-        MergeSort.mergeSort(numeros);
+    private static void pruebaAlgoritmosOrdenamiento() {
+        // Lista de números generada aleatoriamente
+        ArrayList<Integer> numeros = generarListaAleatoria(20);
 
+        // Imprimir lista antes de ordenar
         imprimirListaNumeros(numeros);
-	}
-	
-	// Función para imprimir una lista de números
+
+        // Ordenar utilizando MergeSort
+        ArrayList<Integer> mergeSorted = new ArrayList<>(numeros);
+        MergeSort.mergeSort(mergeSorted);
+        imprimirOrdenamiento("MergeSort", mergeSorted);
+
+        // Ordenar utilizando ShellSort
+        ArrayList<Integer> shellSorted = new ArrayList<>(numeros);
+        ShellSort.ordenar(shellSorted);
+        imprimirOrdenamiento("ShellSort", shellSorted);
+
+        // Ordenar utilizando QuickSort
+        ArrayList<Integer> quickSorted = new ArrayList<>(numeros);
+        QuickSort.quicksort(quickSorted);
+        imprimirOrdenamiento("QuickSort", quickSorted);
+    }
+
+    // Genera una lista de números aleatorios entre 1 y 100
+    private static ArrayList<Integer> generarListaAleatoria(int cantidad) {
+        ArrayList<Integer> lista = new ArrayList<>();
+        Random rand = new Random();
+        for (int i = 0; i < cantidad; i++) {
+            lista.add(rand.nextInt(100) + 1);
+        }
+        return lista;
+    }
+
+    // Función para imprimir una lista de números
     public static void imprimirListaNumeros(ArrayList<Integer> lista) {
         System.out.println("Lista de números: ");
         for (int numero : lista) {
@@ -68,21 +85,12 @@ public class Resoluciones {
         System.out.println();
     }
 
-	// ** PARA GENERAR NUMERO ALEATORIOS
-	public ArrayList<Integer> numRandoms() {
-		// Crear un objeto Random para generar números aleatorios
-		Random rand = new Random();
-
-		// Crear una lista para almacenar los números
-		ArrayList<Integer> numeros = new ArrayList<>();
-
-		// Generar 7 números aleatorios y añadirlos a la lista
-		for (int i = 0; i < 7; i++) {
-			int numeroAleatorio = rand.nextInt(100) + 1; // Genera un número aleatorio entre 1 y 100
-			numeros.add(numeroAleatorio);
-		}
-		
-		return numeros;		
-	}
-
+    // Función para imprimir el resultado del ordenamiento
+    public static void imprimirOrdenamiento(String algoritmo, ArrayList<Integer> lista) {
+        System.out.println("Ordenados con " + algoritmo + ": ");
+        for (int numero : lista) {
+            System.out.print(" " + numero);
+        }
+        System.out.println();
+    }
 }
